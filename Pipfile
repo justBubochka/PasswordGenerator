@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyqt6 = "*"
+mypy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"
+
+
+[scripts]
+# use "pipenv sync"  to install packages in accurate from Pipfile.lock
+# or
+# use "pipenv install"  to install packages from Pipfile 
+
+start-main = "pipenv run python main.py"
+start = "pipenv run python"
