@@ -3,10 +3,13 @@ from helpers.ui.ui_helpers import bindWidgetToLayout
 
 
 class Button(QPushButton):
-    def __init__(self, layout: QLayout, text: str):
+    def __init__(self, layout: QLayout, text: str, styles: str = None):
 
-        self.widget = QPushButton(text)
-        bindWidgetToLayout(layout=layout, widget=self.widget)
+        super().__init__(text)
+        # self.basic_styles = """
+            
+        # """
 
-    def get(self):
-        return self.widget
+        # self.setStyleSheet(self.basic_styles + '; ' + styles if styles else self.basic_styles)
+    
+        bindWidgetToLayout(layout=layout, widget=self)

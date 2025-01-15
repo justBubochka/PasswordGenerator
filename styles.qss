@@ -1,0 +1,26 @@
+QPushButton{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+Button {
+    width: 212px;
+    height: 48px;
+    padding: .6em 1.8em!important;
+    border-radius: 6px!important;
+    background: #0043fa!important;
+    color: #fff!important;
+}
+Button:hover {
+    background: #003cde!important;
+}
+
+Label {
+    font-size: 18px; 
+    font-weight: 400;
+}
+
+MainTitle {
+    font-size: 46px; 
+    font-weight: bold;
+}

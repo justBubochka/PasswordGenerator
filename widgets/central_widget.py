@@ -1,7 +1,8 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from PyQt6.QtCore import Qt
-from entities.title import Title
+from entities.label import Label
 from entities.button import Button
+from widgets.main_title import MainTitle
 
 
 class CentralWidget(QWidget):
@@ -14,18 +15,11 @@ class CentralWidget(QWidget):
 
         self.layout = QVBoxLayout()
 
-        self.title = Title(self.layout, text="Генератор случайных паролей").get()
-        self.generateButton = Button(self.layout, text="Сгенирировать").get()
+        self.title = MainTitle(self.layout, text="Генератор случайных паролей")
+        self.passwordLengthLabel = Label(self.layout, "Длина пароля:")
+
         
-        # self.passwordLengthLabel = FirstLabel(
-        #     self.layout, 
-        #     "Генератор случайных паролей",
-        #     "font-size: 20px; font-weight: bold;"
-        # ).get()
-
-
-        self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.title.setStyleSheet("font-size: 20px; font-weight: bold;")
+        self.generateButton = Button(self.layout, text="Сгенирировать")
 
 
         self.setLayout(self.layout)
