@@ -8,10 +8,18 @@ class Label(QLabel):
     def __init__(
             self, 
             layout: QLayout, 
-            text: str
+            text: str,
+            styles: str = None
         ):
         super().__init__(text)
+
+        if styles is not None:
+            self.setStyleSheet(styles)
+
+        self.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
         bindWidgetToLayout(
             layout=layout, widget=self
         )
+
+        # print(self.text())
