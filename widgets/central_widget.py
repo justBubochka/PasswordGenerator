@@ -17,7 +17,15 @@ class CentralWidget(QWidget):
         self.title = Title(self.layout, text="Генератор случайных паролей").get()
         self.generateButton = Button(self.layout, text="Сгенирировать").get()
         
+        # self.passwordLengthLabel = FirstLabel(
+        #     self.layout, 
+        #     "Генератор случайных паролей",
+        #     "font-size: 20px; font-weight: bold;"
+        # ).get()
+
+
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.title.setStyleSheet("font-size: 20px; font-weight: bold;")
+
 
         self.setLayout(self.layout)

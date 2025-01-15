@@ -1,9 +1,9 @@
-from PyQt6.QtWidgets import QLabel, QLayout, QStyle
+from PyQt6.QtWidgets import QLayout, QStyle
+from entities.title import Title
 from helpers.ui.ui_helpers import bindWidgetToLayout
 
 
-
-class Title(QLabel):
+class FirstLabel(Title):
     def __init__(
             self, 
             layout: QLayout, 
@@ -12,7 +12,8 @@ class Title(QLabel):
         ):
         super().__init__()
 
-        self.widget: QLabel = QLabel(text)
+        self.widget: Title = Title(layout, text, styles)
+        # self.styles = styles
         self.widget.setStyleSheet(styles if styles else "font-size: 18px; font-weight: 400")
 
         bindWidgetToLayout(

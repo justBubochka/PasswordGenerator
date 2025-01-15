@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow
 from widgets.central_widget import CentralWidget
 
 
