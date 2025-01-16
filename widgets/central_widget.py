@@ -1,8 +1,16 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QSizePolicy
+from PyQt6.QtWidgets import (
+    QSizePolicy, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QLineEdit, QSpinBox, QCheckBox,
+    QWidget, QMessageBox
+)
+import random
+import string
 from PyQt6.QtCore import Qt
 from entities.label import Label
 from entities.button import Button
 from widgets.main_title import MainTitle
+from helpers.ui.ui_helpers import bindWidgetToLayout
+from widgets.filters import Filters
+from widgets.results import Results
 
 
 class CentralWidget(QWidget):
@@ -17,10 +25,24 @@ class CentralWidget(QWidget):
         self.layout.setAlignment(Qt.AlignmentFlag.AlignJustify)
 
         self.title = MainTitle(self.layout, text="Генератор случайных паролей")
-        self.passwordLengthLabel = Label(self.layout, "Длина пароля:")
+
+        self.main_content_layout = QHBoxLayout()
+        self.main_content_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.layout.addLayout(self.main_content_layout)
+
+        # Filters
+        self.filters = Filters()
+
+        # Results
+        self.results = Results()
+
+
+        self.main_content_layout.addWidget(self.filters)
+        self.main_content_layout.addStretch()
+        self.main_content_layout.addWidget(self.results)
 
         
-        self.generateButton = Button(self.layout, text="Сгенирировать")
         
         self.description = Label(
             self.layout, 
@@ -35,3 +57,4 @@ class CentralWidget(QWidget):
 
 
         self.setLayout(self.layout)
+        

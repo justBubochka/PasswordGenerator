@@ -1,3 +1,9 @@
+body{
+    overflow-x: hidden;
+    font-size: 18px;
+    background-color: #fff;
+}
+
 QPushButton{
     font-weight: 400;
     font-size: 20px;
@@ -17,9 +23,19 @@ Button:hover {
 Label {
     font-size: 18px; 
     font-weight: 400;
+    color: #000;
+    line-height: 36px;
 }
 
 MainTitle {
     font-size: 46px; 
     font-weight: bold;
+}
+
+Filters {
+
+}
+
+Results {
+    
 }
