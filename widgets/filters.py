@@ -20,6 +20,7 @@ class Filters(QWidget):
 
         self.layout = QVBoxLayout()
         self.layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.setLayout(self.layout)
 
         self.setFixedSize(400, 100)
 

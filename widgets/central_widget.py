@@ -40,6 +40,7 @@ class CentralWidget(QWidget):
 
         self.main_content_layout.addWidget(self.filters)
         self.main_content_layout.addStretch()
+        # self.main_content_layout.addSpacing()
         self.main_content_layout.addWidget(self.results)
 
         
