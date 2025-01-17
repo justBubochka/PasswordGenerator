@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import (
     QSizePolicy, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QLineEdit, QSpinBox, QCheckBox,
     QWidget, QMessageBox
 )
+from PyQt6.QtGui import QPainter
 import random
 import string
 from PyQt6.QtCore import Qt
@@ -15,33 +16,33 @@ from widgets.results import Results
 
 class CentralWidget(QWidget):
     def __init__(self, *args, **kwargs):
-        super().__init__()
+        super().__init__(*args, **kwargs)
         self.setWindowTitle("Центральный виджет")
         self.setGeometry(100, 100, 400, 200)
         self.setParent(args[0])
+
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+
         
 
         self.layout = QVBoxLayout()
-        self.layout.setAlignment(Qt.AlignmentFlag.AlignJustify)
+        self.layout.setContentsMargins(70, 70, 70, 70)
+
 
         self.title = MainTitle(self.layout, text="Генератор случайных паролей")
 
+        self.main_content = QWidget()
         self.main_content_layout = QHBoxLayout()
-        self.main_content_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.main_content.setLayout(self.main_content_layout)
 
-        self.layout.addLayout(self.main_content_layout)
+
+        self.layout.addWidget(self.main_content)
 
         # Filters
-        self.filters = Filters()
+        self.filters = Filters(self.main_content_layout)
 
         # Results
-        self.results = Results()
-
-
-        self.main_content_layout.addWidget(self.filters)
-        self.main_content_layout.addStretch()
-        # self.main_content_layout.addSpacing()
-        self.main_content_layout.addWidget(self.results)
+        self.results = Results(self.main_content_layout)
 
         
         
@@ -56,6 +57,8 @@ class CentralWidget(QWidget):
         )
         self.description.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Expanding)
 
+        self.layout.addWidget(self.description)
+
+    
 
         self.setLayout(self.layout)
-        

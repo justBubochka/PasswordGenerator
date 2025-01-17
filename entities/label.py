@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QLabel, QLayout, QStyle
+from PyQt6.QtWidgets import QLabel, QLayout
 from PyQt6.QtCore import Qt
 from helpers.ui.ui_helpers import bindWidgetToLayout
 

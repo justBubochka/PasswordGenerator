@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 from widgets.central_widget import CentralWidget
 
 
@@ -11,11 +11,12 @@ class MainWindow(QMainWindow):
         self.setGeometry(200, 100, 1600, 800)
         self.initUI()
         self.generate_password()
+
         
 
     def initUI(self):
         self.centralWidget = CentralWidget(self) 
-        self.setCentralWidget(self.centralWidget)
+        self.setCentralWidget(self.centralWidget)   
 
 
     def generate_password(self):
