@@ -12,13 +12,15 @@ from widgets.main_title import MainTitle
 from helpers.ui.ui_helpers import bindWidgetToLayout
 from widgets.filters import Filters
 from widgets.results import Results
+from typing import Callable
 
 
 class CentralWidget(QWidget):
-    def __init__(self, generate_password_func, parent=None, *args, **kwargs):
+    def __init__(self, parent, generate_password_func: Callable, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle("Центральный виджет")
         self.setGeometry(100, 100, 400, 200)
+        self.setParent(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
@@ -68,10 +70,11 @@ class CentralWidget(QWidget):
     
     def generate_password_func(self):
         print("Generate password func called")
-        print("self.filters.password_length" + str(self.filters.password_length.value())) 
-        print("self.filters.include_uppercase" + str(self.filters.include_uppercase.isChecked())) 
-        print("self.filters.include_numbers" + str(self.filters.include_numbers.isChecked())) 
-        print("self.filters.include_symbols" + str(self.filters.include_symbols.isChecked())) 
+        print("self.filters.password_length " + str(self.filters.password_length.value())) 
+        print("self.filters.include_uppercase " + str(self.filters.include_uppercase.isChecked())) 
+        print("self.filters.include_numbers " + str(self.filters.include_numbers.isChecked())) 
+        print("self.filters.include_symbols " + str(self.filters.include_symbols.isChecked())) 
+
         
         self.generate_password_func_callback(
             self.filters.password_length.value(), 

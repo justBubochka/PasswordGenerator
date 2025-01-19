@@ -18,14 +18,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.centralWidget)   
 
 
-    def generate_password(
-        self,
-        password_length: int,
-        use_numbers: bool,
-        use_uppercase: bool,
-        use_symbols: bool
-    ):
-        self.centralWidget
+    def generate_password(self, password_length: int, use_numbers: bool, use_uppercase: bool, use_symbols: bool):
+        print("Фунция генерации пароля вызвана")
 
 
 
