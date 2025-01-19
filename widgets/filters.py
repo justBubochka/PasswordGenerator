@@ -14,7 +14,7 @@ from helpers.ui.ui_helpers import bindWidgetToLayout
 class Filters(QWidget):
     def __init__(
             self, 
-            layout: QLayout,
+            layout: QLayout
         ):
         super().__init__()
 
@@ -40,12 +40,21 @@ class Filters(QWidget):
 
         self.include_numbers = QCheckBox("Цифры")
         self.include_numbers.setChecked(True)
+        bindWidgetToLayout(
+            layout=self.layout, widget=self.include_numbers
+        )
 
         self.include_uppercase = QCheckBox("ПРОПИСНЫЕ БУКВЫ")
         self.include_uppercase.setChecked(True)
+        bindWidgetToLayout(
+            layout=self.layout, widget=self.include_uppercase
+        )
 
         self.include_symbols = QCheckBox("Спец.символы")
         self.include_symbols.setChecked(True)
+        bindWidgetToLayout(
+            layout=self.layout, widget=self.include_symbols
+        )
 
 
 

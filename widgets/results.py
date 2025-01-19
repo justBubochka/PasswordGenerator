@@ -17,6 +17,7 @@ class Results(QWidget):
     def __init__(
             self, 
             layout: QLayout,
+            generate_password_func
         ):
         super().__init__()
 
@@ -34,7 +35,8 @@ class Results(QWidget):
 
         
 
-        self.generateButton = Button(self.layout, text="Сгенирировать")
+        self.generate_button = Button(self.layout, text="Сгенирировать")
+        self.generate_button.clicked.connect(generate_password_func)
 
         bindWidgetToLayout(layout=layout, widget=self)
 

@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow
 from widgets.central_widget import CentralWidget
 
 
@@ -10,17 +10,22 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Окно приложения")
         self.setGeometry(200, 100, 1600, 800)
         self.initUI()
-        self.generate_password()
 
         
 
     def initUI(self):
-        self.centralWidget = CentralWidget(self) 
+        self.centralWidget = CentralWidget(self, self.generate_password) 
         self.setCentralWidget(self.centralWidget)   
 
 
-    def generate_password(self):
-        pass
+    def generate_password(
+        self,
+        password_length: int,
+        use_numbers: bool,
+        use_uppercase: bool,
+        use_symbols: bool
+    ):
+        self.centralWidget
 
 
 
