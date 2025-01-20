@@ -22,7 +22,6 @@ class MainWindow(QMainWindow):
 
 
     def generate_password(self, password_length: int, use_numbers: bool, use_uppercase: bool, use_lowercase: bool, use_symbols: bool):
-        print("Фунция генерации пароля вызвана")
         sequence = ""
         # sequence_rules
         if (password_length < 8):
@@ -37,17 +36,19 @@ class MainWindow(QMainWindow):
             sequence += string.punctuation
 
         passwords = []
+        if (use_numbers is False and use_uppercase is False and use_lowercase is False and use_symbols is False):
+            return passwords
+        
         password = ''
         while True and len(passwords) < 8:
             password = ''
-            password = password.join(secrets.choice(sequence) for i in range(12))
+            password = password.join(secrets.choice(sequence) for i in range(password_length))
 
             if (
                 (any(c.islower() for c in password) if use_lowercase is True else True) 
                 and (any(c.isupper() for c in password) if use_uppercase is True else True) 
                 and (sum(c.isdigit() for c in password) >= 3 if use_numbers is True else True)
             ):
-                print("готовый пароль" + password)
                 passwords.append(password)
             if len(passwords) == 8:
                 break

@@ -39,11 +39,15 @@ class CentralWidget(QWidget):
         self.main_content_layout = QHBoxLayout()
         self.main_content.setLayout(self.main_content_layout)
 
+        self.main_content_layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+
 
         self.layout.addWidget(self.main_content)
 
         # Filters
         self.filters = Filters(self.main_content_layout)
+
+        self.main_content_layout.addStretch()
 
         # Results
         self.results = Results(self.main_content_layout, self.generate_password_func)

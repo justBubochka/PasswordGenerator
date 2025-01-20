@@ -19,13 +19,14 @@ class Filters(QWidget):
         super().__init__()
 
         self.layout = QVBoxLayout()
-        self.layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
         self.setLayout(self.layout)
 
         
         self.password_wrapper = QWidget()
         self.password_wrapper_layout = QHBoxLayout()
         self.password_wrapper.setLayout(self.password_wrapper_layout)
+        self.password_wrapper_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self.layout.addWidget(self.password_wrapper)
 
