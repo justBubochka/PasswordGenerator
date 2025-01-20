@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import (
 )
 import random
 import string
+from typing import List
 from PyQt6.QtCore import Qt
 from entities.label import Label
 from entities.button import Button
@@ -17,26 +18,37 @@ class Results(QWidget):
     def __init__(
             self, 
             layout: QLayout,
-            generate_password_func
+            generate_password_func_callback
         ):
         super().__init__()
+
+        self.generate_password_func_callback = generate_password_func_callback
+        self.passwords: List = None
 
         self.layout = QVBoxLayout()
         self.layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.setLayout(self.layout)
-
-        self.generated_password_output = CopyText(
-            layout=self.layout, 
-            text="НОВЫЙ ПАРОЛЬ"
-        )
-
-        # self.generate_button = QPushButton("Generate Password")
-        # self.generate_button.clicked.connect(self.generate_password)
-
+        
+        self.generated_passwords: List[CopyText] = []
+        for i in range(8):
+            generated_password_output = CopyText(
+                    layout = self.layout, 
+                    text = ''
+                )
+            self.generated_passwords.append(
+                generated_password_output
+            )
         
 
         self.generate_button = Button(self.layout, text="Сгенирировать")
-        self.generate_button.clicked.connect(generate_password_func)
+        self.generate_button.clicked.connect(self.generate_password_func)
 
         bindWidgetToLayout(layout=layout, widget=self)
+
+    def generate_password_func(self):
+        self.passwords = self.generate_password_func_callback()
+        if isinstance(self.passwords, list) and len(self.passwords) > 0:
+            for i in range(8):
+                self.generated_passwords[i].text.setText(self.passwords[i])
+          
 

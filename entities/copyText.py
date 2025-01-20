@@ -34,8 +34,6 @@ class CopyText(QWidget):
             layout=layout, widget=self
         )
 
-        # print(self.text())
-
 
     def button_was_clicked (self):
         self.writeTextToBuffer(self.text.text())

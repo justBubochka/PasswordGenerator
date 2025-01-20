@@ -69,16 +69,11 @@ class CentralWidget(QWidget):
 
     
     def generate_password_func(self):
-        print("Generate password func called")
-        print("self.filters.password_length " + str(self.filters.password_length.value())) 
-        print("self.filters.include_uppercase " + str(self.filters.include_uppercase.isChecked())) 
-        print("self.filters.include_numbers " + str(self.filters.include_numbers.isChecked())) 
-        print("self.filters.include_symbols " + str(self.filters.include_symbols.isChecked())) 
-
         
-        self.generate_password_func_callback(
-            self.filters.password_length.value(), 
-            self.filters.include_uppercase.isChecked(), 
-            self.filters.include_numbers.isChecked(),
-            self.filters.include_symbols.isChecked()
+        return self.generate_password_func_callback(
+            password_length=self.filters.password_length.value(),
+            use_numbers=self.filters.include_numbers.isChecked(),
+            use_uppercase=self.filters.include_uppercase.isChecked(),
+            use_lowercase=self.filters.include_lowercase.isChecked(),
+            use_symbols=self.filters.include_symbols.isChecked()
         )

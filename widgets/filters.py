@@ -22,7 +22,6 @@ class Filters(QWidget):
         self.layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.setLayout(self.layout)
 
-        # self.setFixedSize(500, 100)
         
         self.password_wrapper = QWidget()
         self.password_wrapper_layout = QHBoxLayout()
@@ -50,15 +49,17 @@ class Filters(QWidget):
             layout=self.layout, widget=self.include_uppercase
         )
 
+        self.include_lowercase = QCheckBox("строчные буквы")
+        self.include_lowercase.setChecked(True)
+        bindWidgetToLayout(
+            layout=self.layout, widget=self.include_lowercase
+        )
+
         self.include_symbols = QCheckBox("Спец.символы")
         self.include_symbols.setChecked(True)
         bindWidgetToLayout(
             layout=self.layout, widget=self.include_symbols
         )
-
-
-
-        
 
 
 
